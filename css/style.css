@@ -1,0 +1,58 @@
+.wrapper1 {
+  max-height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+}
+
+.wrapper1::-webkit-scrollbar {
+  width: 0;
+}
+
+.wrapper1 .item {
+  min-width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  margin-right: 2px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.wrapper_items {
+  max-height: 130px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+}
+
+nav ul li:hover {
+  color: black;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.rounded-icon {
+  width: 35px;
+  height: 35px;
+}
+
+#small-logo {
+  width: 15%;
+}
+
+#main-logo {
+  width: 30%;
+}
+
+#small-logo2 {
+  width: 17%;
+}
+/*# sourceMappingURL=style.css.map */
