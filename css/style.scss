@@ -1,27 +1,26 @@
 .wrapper1{
-    max-height: 50px;
+    max-height: 80px;
     display: flex;
     overflow-x: auto;
-}
-.wrapper1::-webkit-scrollbar{
+  }
+  .wrapper1::-webkit-scrollbar{
     width: 0;
-}
-.wrapper1 .item{
-    min-width: 50px;
+  }
+  .wrapper1 .item{
+    min-width: 110px;
     height: 50px;
     line-height: 50px;
     text-align: center;
     margin-right: 2px;
-}
-::-webkit-scrollbar {
+  }
+  ::-webkit-scrollbar {
     display: none;
-}
-.wrapper_items{
-    max-height: 130px;
+  }
+  .wrapper_items{
+    max-height: 50px;
     display: flex;
     overflow-x: auto;
-}
-
+  }
 nav ul li:hover {
     color: black;
   }
@@ -47,3 +46,87 @@ nav ul li:hover {
 #small-logo2 {
     width: 17%;
   }
+
+  .imageess {
+    position: relative;
+    height: 150px;
+    margin: 12px;
+    width: 100%;
+    right: 20px;
+    margin-top: 0;
+    -o-object-fit: fill;
+    object-fit: fill;
+}
+  .imageess2{
+    position: relative;
+    width: 90%;
+    height: 150px;
+    margin: 12px;
+    margin-top: 0;
+    -o-object-fit: fill;
+    object-fit: fill;
+}
+  .card-img{
+      object-fit: fill;
+}
+  .card-title{
+    font-size: 20px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+  .card-title2{
+      font-size: 14px;
+      &:hover{
+          cursor: pointer;
+      }
+}
+  .text-card{
+    font-size: 14px;
+    color: gray;
+}
+  .btn-group{
+    position: relative;
+    padding-right: 50px;
+}  
+.sizetext{
+    font-size: 13px;
+    color: rgb(104, 102, 102);
+}
+.marge{
+    margin-left: 68px;
+}
+.arrows{
+    margin-top: 8px;
+    
+}
+.arrow{
+    margin-top: 8px;
+    
+}
+.textA{
+    font-size: 13px;
+    font-weight: bold;
+}
+.dotts{
+    width: 20px;
+    margin-left: 35px;
+}
+
+.aside{
+    position: -webkit-sticky;
+    position: sticky;
+    top:50px
+}
+.spam{
+    background-color: rgb(247, 245, 247);
+}
+.about{
+    font-size: 14px;
+}
+.menu:hover{
+   cursor: pointer;
+}
+.dotts:hover{
+ cursor: pointer;
+}
