@@ -165,4 +165,33 @@ nav ul li:hover {
   background-color: black;
   color: white;
 }
+
+li {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+li:hover {
+  color: black;
+}
+
+li img {
+  margin: auto;
+}
+
+.aside {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.asaide {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+}
 /*# sourceMappingURL=style.css.map */

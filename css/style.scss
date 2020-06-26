@@ -137,3 +137,25 @@ nav ul li:hover {
   background-color: black;
   color: white;
 }
+
+li{
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  font-size: 10px;    
+}
+li:hover{
+  color: black;
+}
+li img{
+  margin: auto;
+}
+.aside{
+  position:sticky;
+  top: 0;
+}
+.asaide{
+  position: -webkit-sticky;
+  position: sticky;
+  top:50px
+}

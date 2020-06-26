@@ -42,6 +42,7 @@ const handleSaveListener = () => {
 
 // Esta función guarda el objeto post en la DB
 const postData = (object) => {
+    var date = new Date();
     let milisegundos = date.getTime();
     object = { ...object, milisegundos }
     log(object)
@@ -520,10 +521,10 @@ const printRightPost = (array) => {
 //         loadMorePost()
 //     }
 
-const printCardInf = (array)=>{
-    array.forEach( post=>{
-    let {title, text, author, milisegundos, imgUrl, id}= post
-    let postCard3 = `
+const printCardInf = (array) => {
+    array.forEach(post => {
+        let { title, text, author, milisegundos, imgUrl, id } = post
+        let postCard3 = `
  
             <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog modal-xl">
@@ -617,22 +618,18 @@ const printCardInf = (array)=>{
                 </div>
             </div>
         </div>`
-    $("#infinitoScroll").append(postCard3)
+        $("#infinitoScroll").append(postCard3)
     })
 }
 
 
-
-
-
 const printPopularPosts = (array) => {
     let popularCounter = 0
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         let post = array[i];
-        let { title, author, createdAt, id } = post
+        let { title, author, milisegundos, text, imgUrl, id } = post
         let postCard2 =
-            `
-            <li class="mb-5">
+            `<li class="mb-5">
                 <div class="col-3 col-md-4 p-0">
                     <h2 class="text-muted text-right">0${popularCounter + 1}</h2>
                 </div>
@@ -741,10 +738,8 @@ const printPopularPosts = (array) => {
         </div>
     </div>
 </div>
-
-
 `
-        $("#popularonmedium").append(postCard2)
+        $("#container-popular").append(postCard2)
         popularCounter++
     }
 
@@ -760,3 +755,4 @@ printRightPost(arrayRecentSection)
 printFirstPost()
 printMiddlePosts(arrayRecentSection)
 printCardInf(arrayTotals)
+printPopularPosts(arrayPopularSection)
