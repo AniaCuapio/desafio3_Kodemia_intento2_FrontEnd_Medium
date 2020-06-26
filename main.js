@@ -127,6 +127,7 @@ const printFirstPost = () => {
                     </div>
                     <div class="col-8 ml-4">
                         <div class="textos">
+                        <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
                             <p class="card-title font-weight-bold"data-toggle="modal" data-target="#exampleModal-${id}">${title}</p>
                             <p class="text-card"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 80)}">${text.slice(0, 80)}
                             </p>
@@ -267,6 +268,7 @@ const printMiddlePosts = (array) => {
                     </div>
                     <div class="col-8">
                         <div class="card-body pr-0 pt-0">
+                        <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
                             <h5 class="card-title2 font-weight-bold" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h5>
                             <div class="btn-group2 d-flex align-items-center justify-content-between">
                                 <div>
@@ -400,6 +402,7 @@ const printRightPost = (array) => {
         </div>
         <div class="col-md-8 ml-4">
             <div class="textos">
+            <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
                 <p class="card-title font-weight-bold"data-toggle="modal" data-target="#exampleModal-${id}">${title}</p>
                 <p class="text-card"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 80)} ">${text.slice(0, 80)}</p>
             </div>
@@ -525,7 +528,7 @@ const printCardInf = (array) => {
     array.forEach(post => {
         let { title, text, author, milisegundos, imgUrl, id } = post
         let postCard3 = `
- 
+
             <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog modal-xl">
                 <div class="modal-content">
@@ -622,10 +625,10 @@ const printCardInf = (array) => {
     })
 }
 
-const printCardInfinitIzquierda= (array) => {
+const printCardInfinitIzquierda = (array) => {
     array.forEach(post => {
         let { title, text, author, milisegundos, imgUrl, id } = post
-        let  infinitScroll = `
+        let infinitScroll = `
         <div id="second-card" class="card mb-3 border-0">                
         <div class="row no-gutters d-flex align-items-center  flex-row-reverse">                
             <div class="col-4">
@@ -634,6 +637,7 @@ const printCardInfinitIzquierda= (array) => {
             </div>
             <div class="col-8 ">
                 <div class="card-body pr-0 pt-0 ">
+                <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
                     <h5 class="card-title font-weight-bold " data-toggle="modal" data-target="#exampleModal-${id}">${title}</h5>
                     <div class="btn-group2 d-flex align-items-center justify-content-between">
                         <div>
@@ -753,7 +757,7 @@ const printCardInfinitIzquierda= (array) => {
     </div>
 </div>
     `
-    $("#infinitoScroll").append(infinitScroll)
+        $("#infinitoScroll").append(infinitScroll)
     })
 }
 
@@ -768,6 +772,7 @@ const printPopularPosts = (array) => {
                     <h2 class="text-muted text-right">0${popularCounter + 1}</h2>
                 </div>
                 <div class="col-9 col-md-8">
+                <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
                     <h6 class="textA" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h6>
                     <div>
                     <span><a class="text-dark user" href="#"data-toggle="popover" data-placement="top" data-author="${author}" data-age="${randomNumber}">${author}</a>
@@ -880,15 +885,37 @@ const printPopularPosts = (array) => {
 }
 
 
+const deletePost = (e) => {
+    e.stopPropagation();
+    console.log(e.target)
+    let id = e.target.getAttribute("data-id")
+    console.log(id)
+    deletePostDB(id)
+    location.reload()
+    alert("prueba de borrar")
+}
 
-// <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-//     Launch demo modal
-// </button>
 
+const deletePostDB = (PostId) => {
+    let xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(this.responseText)
+            console.log(response)
+        }
+    }
+    xhttp.open("DELETE", `https://ajaxclass-1ca34.firebaseio.com/medium-team2/${PostId}.json`, true)
+    xhttp.send()
+    console.log("post borrado")
+}
 
-printRightPost(arrayRecentSection)
-printFirstPost()
-printMiddlePosts(arrayRecentSection)
-printCardInf(arrayTotals)
-printPopularPosts(arrayPopularSection)
-printCardInfinitIzquierda(arrayTotals)
+const printAllPosts = () => {
+    printRightPost(arrayRecentSection)
+    printFirstPost()
+    printMiddlePosts(arrayRecentSection)
+    // printCardInf(arrayTotals)
+    printPopularPosts(arrayPopularSection)
+    printCardInfinitIzquierda(arrayTotals)
+    $(".detele-btn").click(deletePost)
+}
+printAllPosts()
