@@ -258,7 +258,7 @@ const printMiddlePosts = (array) => {
         log(post)
         let { title, imgUrl, author, milisegundos, id, text } = post
         let postCard =
-            `<div id="second-card" class="card mb-3">
+            `<div id="second-card" class="card mb-3 border-0">
                 <div class="row no-gutters d-flex align-items-center  flex-row-reverse flex-md-row">
                     <div class="col-4">
                         <img width="100%"
@@ -622,6 +622,140 @@ const printCardInf = (array) => {
     })
 }
 
+const printCardInfinitIzquierda= (array) => {
+    array.forEach(post => {
+        let { title, text, author, milisegundos, imgUrl, id } = post
+        let  infinitScroll = `
+        <div id="second-card" class="card mb-3 border-0">                
+        <div class="row no-gutters d-flex align-items-center  flex-row-reverse">                
+            <div class="col-4">
+                <img src="${imgUrl}"
+                    class="card-img mb-3 w-75" alt="">
+            </div>
+            <div class="col-8 ">
+                <div class="card-body pr-0 pt-0 ">
+                    <h5 class="card-title font-weight-bold " data-toggle="modal" data-target="#exampleModal-${id}">${title}</h5>
+                    <div class="btn-group2 d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text muted"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 50)} ">${text.slice(0, 50)} </p>
+                            <a class="text-dark user"data-toggle="popover" data-placement="top" data-author="${author}" data-age="" href="#">${author}</a>
+                            <span class="text-dark user">in</span>
+                            <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
+                            <br><time class=" text-muted user"data-toggle="tooltip" data-placement="top" title="${milisegundos} min read" >${milisegundos}</time><span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="&bull; ${randomNumber} min read">
+                            &bull; ${randomNumber} min
+                                read★</span><span> <img width="8px" src="images/star (3).svg" alt="">
+                            </span>
+                        </div>
+                        <div class="d-flex mr-2">
+                        <span><svg class="bi bi-bookmark text-muted" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
+                    </svg></span>
+                    <span> <svg class="bi bi-three-dots text-muted" alt="dotts"data-toggle="popoverdott" data-placement="bottom" data-menu="" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                  </svg></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Just an image -->
+                <nav class="navbar navbar-light">
+                    <a class="navbar-brand" href="#">
+                        <div>
+                            <img src="https://miro.medium.com/max/195/1*emiGsBgJu2KHWyjluhKXQw.png" width="30"
+                                height="30" alt="" loading="lazy">
+                        </div>
+                    </a>
+                </nav>
+            </div>
+            <div class="modal-body">
+                <div class="row d-flex align-items-center">
+                    <div class=" col-12 col-md-3">
+                        <div class="card border-0 ">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bolder mb-0">Human Parts</h6>
+                                <p class="text-muted mb-0 "><small>A Medium </small></p>
+                                <p class="text-muted mb-0"><small>publication about </small></p>
+                                <p class="text-muted mb-0"><small>humanity: yours,</small></p>
+                                <p class="text-muted mb-2"><small>mine, and ours</small></p>
+                                <p><small class="border border-danger rounded-lg w-2 text-danger p-2 ml-0 "> Follow
+                                    </small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="card border-0">
+                            <div class="card-body pl-0">
+                                <p class="card-subtitle mb-2 text-muted">PAST IS PROLOGUE</p6>
+                                <h5 class="card-title">${title}</h5>
+                                <p class="card-text text-muted">${text.slice(0, 50)}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <div class="card mb-5 border-0" style="max-width: 200px;">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <img src="${imgUrl}"
+                                                class="card-img rounded-circle" alt="..."
+                                                style="width:50px; height:50px;">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body p-0">
+                                                <p class="card-text mb-0"><small>${author}</small> <small
+                                                        class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
+                                                        Follow </small></p>
+                                                <p class="card-text"><small>${milisegundos}· ${randomNumber} min read ★</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 mt-3">
+                            <span><i class="fab fa-twitter"></i></span>
+                            <span><i class="fab fa-linkedin-in"></i></span>
+                            <span><i class="fab fa-facebook-square"></i></span>
+                            <span><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
+                                </svg></span>
+                                <span> <svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                              </svg></span>
+                            </div>
+                        </div>
+                        <div class="card border-0">
+                            <img src="${imgUrl}"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">${text}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-12 col-md-3">
+                        <div class="card border-0">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    `
+    $("#infinitoScroll").append(infinitScroll)
+    })
+}
 
 const printPopularPosts = (array) => {
     let popularCounter = 0
@@ -641,7 +775,7 @@ const printPopularPosts = (array) => {
                     <br><time class=" text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}">${milisegundos}</time>
 <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="${randomNumber} min read">
 
-<span width="6px" alt=""> &bull; ${randomNumber} min read </span>
+<span width="6px" alt=""> &bull; ${randomNumber} min read ★</span>
 <span class="text-muted"> </span>
 </div>
     </div>
@@ -746,6 +880,7 @@ const printPopularPosts = (array) => {
 }
 
 
+
 // <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 //     Launch demo modal
 // </button>
@@ -756,3 +891,4 @@ printFirstPost()
 printMiddlePosts(arrayRecentSection)
 printCardInf(arrayTotals)
 printPopularPosts(arrayPopularSection)
+printCardInfinitIzquierda(arrayTotals)
