@@ -538,8 +538,8 @@ const printCardInfinitIzquierda = (array) => {
                             <span class="text-dark user">in</span>
                             <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
                             <br><time class=" text-muted user"data-toggle="tooltip" data-placement="top" title="${milisegundos} min read" >${milisegundos}</time><span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="&bull; ${randomNumber} min read">
-                            &bull; ${randomNumber} min
-                                read★</span><span> <img width="8px" src="images/star (3).svg" alt="">
+                            &bull; ${randomNumber} min★
+                                read★</span><span>
                             </span>
                         </div>
                         <div class="d-flex mr-2">
