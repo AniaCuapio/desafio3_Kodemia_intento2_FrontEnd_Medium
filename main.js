@@ -1,5 +1,5 @@
 let log = console.log
-
+ 
 //Función para el scroll horizontal de la nav bar
 $('#toRight').click(function () {
     var position = $('.wrapper_items').scrollLeft();
@@ -14,6 +14,12 @@ $('#toLeft').click(function () {
     }, 400);
 })
 
+window.addEventListener("scroll", (event) => {
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 400) {
+        printCardInfinitIzquierda(arrayTotals)        
+
+    }
+})
 
 //  Esta funcion dibuja el html alternativo
 const loadPage = (selector, url, callback) => {
@@ -626,6 +632,7 @@ const printCardInf = (array) => {
 }
 
 const printCardInfinitIzquierda = (array) => {
+
     array.forEach(post => {
         let { title, text, author, milisegundos, imgUrl, id } = post
         let infinitScroll = `
@@ -919,3 +926,10 @@ const printAllPosts = () => {
     $(".detele-btn").click(deletePost)
 }
 printAllPosts()
+
+
+
+
+
+
+

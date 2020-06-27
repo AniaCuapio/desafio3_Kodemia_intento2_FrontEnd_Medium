@@ -194,4 +194,10 @@ li img {
   position: sticky;
   top: 50px;
 }
+
+.vis {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 /*# sourceMappingURL=style.css.map */
