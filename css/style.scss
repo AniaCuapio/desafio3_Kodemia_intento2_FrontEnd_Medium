@@ -133,7 +133,7 @@ nav ul li:hover {
 .modal{
   z-index: 99;
 }
-.card-tex-black{
+.card-text-black{
   background-color: black;
   color: white;
 }
@@ -162,4 +162,6 @@ li img{
 .vis{
   position: sticky;
   top: 0;
+  z-index: 99;
 }
+

@@ -35,6 +35,8 @@ const handleSaveListener = () => {
         //log(section)
         let postObject = { title, text, author, imgUrl, section }
         postData(postObject)
+        getPostsFromDb()
+        printAllPosts()
         location.reload();
     });
 }
@@ -65,7 +67,7 @@ const getPostsFromDb = () => {
             $.each(response, (key, value) => {
                 // log('key: ', key)
                 // log('post value: ', value)
-                postsToRender.push({ ...value, id: key });
+                postsToRender.unshift({ ...value, id: key });
                 // let { id, imgUrl, title, text, author, section, createdAt } = value
                 log(value)
             })
@@ -103,7 +105,6 @@ log("array recent:", arrayRecentSection)
 log("array popular:", arrayPopularSection)
 let arrayTotals = arrayPopularSection.concat(arrayRecentSection)
 log("array totals:", arrayTotals)
-
 
 
 function getRandomInt(max) {
@@ -153,7 +154,6 @@ const printFirstPost = () => {
                               </svg>
                             </div>
                         </div>
-            
                     </div>
                 </div>
                 <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
@@ -789,6 +789,7 @@ const deletePost = (e) => {
     let id = e.target.getAttribute("data-id")
     console.log(id)
     deletePostDB(id)
+    getPostsFromDb()
     location.reload()
     alert("prueba de borrar")
 }
@@ -808,7 +809,7 @@ const deletePostDB = (PostId) => {
 }
 
 const printAllPosts = () => {
-    printRightPost(arrayPopularSection)
+    printRightPost(arrayRecentSection)
     printFirstPost()
     printMiddlePosts(arrayRecentSection)
     printPopularPosts(arrayPopularSection)
@@ -820,6 +821,7 @@ printAllPosts()
 
 window.addEventListener("scroll", (event) => {
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 400) {
-        printCardInfinitIzquierda()
+        getPostsFromDb()
+        printCardInfinitIzquierda(arrayTotals)
     }
 })

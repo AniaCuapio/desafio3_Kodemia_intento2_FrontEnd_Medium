@@ -161,7 +161,7 @@ nav ul li:hover {
   z-index: 99;
 }
 
-.card-tex-black {
+.card-text-black {
   background-color: black;
   color: white;
 }
@@ -199,5 +199,6 @@ li img {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  z-index: 99;
 }
 /*# sourceMappingURL=style.css.map */
