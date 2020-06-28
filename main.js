@@ -263,9 +263,9 @@ const printMiddlePosts = (array) => {
                     </div>
                     </div>
                     <div class="col-8">
-                        <div class="card-body pr-0 pt-0">
+                        <div class="card-body pr-0 pt-0 pb-0">
                         <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
-                            <h3 class="card-title2 font-weight-bold" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h3>
+                            <h4 class="card-title2 font-weight-bold mb-0 " data-toggle="modal" data-target="#exampleModal-${id}">${title.slice(0,18)}</h4>
                             <div class="btn-group2 d-flex align-items-center justify-content-between">
                                 <div>
                                     <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author} "data-age="<small>${getRandomInt(20)}</small>" >${author}</a>
@@ -517,40 +517,38 @@ const printCardInfinitIzquierda = (array) => {
     array.forEach(post => {
         let { title, text, author, milisegundos, imgUrl, id } = post
         let infinitScroll = `
-        <div id="second-card" class="card mb-3 border-0">                
-        <div class="row no-gutters d-flex align-items-center  flex-row-reverse">                
+    <div id="second-card" class="card mb-5 border-0 pr-2">
+        <div class="row no-gutters d-flex align-items-center  flex-row-reverse ">
             <div class="col-4">
-                <img src="${imgUrl}"
-                    class="card-img scroll-image w-75" alt="">
+            <div class="img-m-p"><img src="${imgUrl}" class="card-img2 ml-3 float-right"  alt="">
             </div>
-            <div class="col-8 ">
-                <div class="card-body pr-0 pt-0 ">
+            </div>
+            <div class="col-8">
+                <div class="card-body pr-5 pt-0 pt-0">
                 <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
-                    <h5 class="card-title font-weight-bold " data-toggle="modal" data-target="#exampleModal-${id}">${title}</h5>
+                    <h3 class="card-title3 font-weight-bold" data-toggle="modal" data-target="#exampleModal-${id}">${title.slice(0,50)}</h3>
                     <div class="btn-group2 d-flex align-items-center justify-content-between">
                         <div>
-                            <p class="text muted"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 50)} ">${text.slice(0, 50)} </p>
-                            <a class="text-dark user"data-toggle="popover" data-placement="top" data-author="${author}" data-age="" href="#"><small>${author}</small></a>
-                            <span class="text-dark user"><small>in</small></span>
-                            <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
-                            <br><time class=" text-muted user"data-toggle="tooltip" data-placement="top" title="${milisegundos} min read"> 
-                            <small>${milisegundos}<small></time><span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="&bull; ${getRandomInt(20)} min read">
-                            &bull; ${getRandomInt(20)} min read <small>★<small> </span>
+                            <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author} "data-age="<small>${getRandomInt(20)}</small>" >${author}</a>
+                            <span class="text-dark user author-tex mb-0">in maker</span>
+                            <a class="text-dark user" href="https://medium.com/" data-toggle="popover2" data-placement="top" data-category=""></a>
+                            <br>
+                            
+                            <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}"><small>${milisegundos}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"alt="" > &bull; <small>${getRandomInt(20)} min read</small> </span><span class="text-muted user" > <small>★<small> </span>
                         </div>
-                        <div class="d-flex mr-2">
-                        <span><svg class="bi bi-bookmark text-muted" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
-                    </svg></span>
-                    <span> <svg class="bi bi-three-dots text-muted" alt="dotts"data-toggle="popoverdott" data-placement="bottom" data-menu="" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <div>
+                        <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z"/>
+                    </svg> 
+                    <svg class="bi bi-three-dots mr-2 menu text-muted" width="1rem" height="1rem"  alt="dotts"data-toggle="popoverdott" data-placement="bottom" data-menu="" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                  </svg></span>
-                        </div>
+                    </svg>
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+       </div>
+    </div>   
     <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog modal-xl">
         <div class="modal-content">
@@ -660,7 +658,7 @@ const printPopularPosts = (array) => {
                 </div>
                 <div class="col-9 col-md-8">
                 <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
-                    <h6 class="textA" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h6>
+                    <h6 class="textA" data-toggle="modal" data-target="#exampleModal-${id}">${title.slice(0,18)}</h6>
                     <div>
                     <span><a class="text-dark user" href="#"data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a>
                     </span> In <span><a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a></span>
