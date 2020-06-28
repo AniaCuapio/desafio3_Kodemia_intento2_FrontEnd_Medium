@@ -141,9 +141,7 @@ const printFirstPost = () => {
                                 <time class=" text-muted user ml-3">${milisegundos}</time><span class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${randomNumber} min read">
                                 <svg data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg> ${randomNumber} min
-                                    read </span><span><svg class="bi bi-star-fill text-muted" width="0.8rem" height="0.8rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                  </svg> </span>
+                                    read </span><span><svg class="bi bi-star-fill text-muted" width="0.8rem" height="0.8rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><small class="text-muted">★<small></span>
                             </div>
                             <div class="col-3 p-0 d-flex justify-content-end">
                             <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -207,7 +205,7 @@ const printFirstPost = () => {
                                                             <p class="card-text mb-0"><small>${author}</small> <small
                                                                     class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                     Follow </small></p>
-                                                            <p class="card-text"><small>${milisegundos}· ${randomNumber} min read <small>★<small> </small></p>
+                                                            <p class="card-text"><small>${milisegundos}· ${randomNumber} min read ★ </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -261,22 +259,21 @@ const printMiddlePosts = (array) => {
             `<div id="second-card" class="card mb-3 border-0">
                 <div class="row no-gutters d-flex align-items-center  flex-row-reverse flex-md-row">
                     <div class="col-4">
-                        <img width="100%"
-                            src="${imgUrl}"
-                            class="card-img mb-3" alt="">
+                    <div class="img-m-p"><img src="${imgUrl}" class="card-img"  alt="">
+                    </div>
                     </div>
                     <div class="col-8">
                         <div class="card-body pr-0 pt-0">
                         <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
-                            <h5 class="card-title2 font-weight-bold" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h5>
+                            <h3 class="card-title2 font-weight-bold" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h3>
                             <div class="btn-group2 d-flex align-items-center justify-content-between">
                                 <div>
-                                    <a class="text-dark user" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="${randomNumber}" >${author}</a>
-                                    <span class="text-dark user">in</span>
+                                    <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author} "data-age="<small>${randomNumber}</small>" >${author}</a>
+                                    <span class="text-dark user author-tex mb-0">in maker</span>
                                     <a class="text-dark user" href="https://medium.com/" data-toggle="popover2" data-placement="top" data-category=""></a>
                                     <br>
                                     
-                                    <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}">${milisegundos}</time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= " >${randomNumber} min read"                                           alt="" > &bull; ${randomNumber} min
+                                    <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated <small>${milisegundos}</small>"><small>${milisegundos}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= " ><small>${randomNumber} min read</small>"                                           alt="" > &bull; ${randomNumber} min
                                         read </span><span class="text-muted user" > <small>★<small> </span>
                                 </div>
                                 <div>

@@ -91,7 +91,8 @@ nav ul li:hover {
 }
 
 .card-title2 {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .card-title2:hover {
@@ -200,5 +201,19 @@ li img {
   position: sticky;
   top: 0;
   z-index: 99;
+}
+
+.img-m-p {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
+.card-img {
+  height: 100px;
+  width: 100px;
+}
+
+.author-tex{
+font-size: 12px;
 }
 /*# sourceMappingURL=style.css.map */
