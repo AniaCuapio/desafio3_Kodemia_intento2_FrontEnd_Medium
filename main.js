@@ -111,7 +111,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-let randomNumber = getRandomInt(1 - 20)
+let randomNumber = getRandomInt(20)
 
 const printFirstPost = () => {
     let firstPost = arrayRecentSection[0]
@@ -138,9 +138,9 @@ const printFirstPost = () => {
                                 <span class="text-dark user">in </span>
                                 <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
                                 <br>
-                                <time class=" text-muted user ml-3">${milisegundos}</time><span class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${randomNumber} min read">
+                                <time class=" text-muted user ml-3">${milisegundos}</time><span class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${getRandomInt(20)} min read">
                                 <svg data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg> ${randomNumber} min
+                                <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg> ${getRandomInt(20)} min
                                     read </span><span><svg class="bi bi-star-fill text-muted" width="0.8rem" height="0.8rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><small class="text-muted">★<small></span>
                             </div>
                             <div class="col-3 p-0 d-flex justify-content-end">
@@ -205,7 +205,7 @@ const printFirstPost = () => {
                                                             <p class="card-text mb-0"><small>${author}</small> <small
                                                                     class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                     Follow </small></p>
-                                                            <p class="card-text"><small>${milisegundos}· ${randomNumber} min read ★ </p>
+                                                            <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★ </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -268,13 +268,12 @@ const printMiddlePosts = (array) => {
                             <h3 class="card-title2 font-weight-bold" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h3>
                             <div class="btn-group2 d-flex align-items-center justify-content-between">
                                 <div>
-                                    <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author} "data-age="<small>${randomNumber}</small>" >${author}</a>
+                                    <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author} "data-age="<small>${getRandomInt(20)}</small>" >${author}</a>
                                     <span class="text-dark user author-tex mb-0">in maker</span>
                                     <a class="text-dark user" href="https://medium.com/" data-toggle="popover2" data-placement="top" data-category=""></a>
                                     <br>
                                     
-                                    <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated <small>${milisegundos}</small>"><small>${milisegundos}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= " ><small>${randomNumber} min read</small>"                                           alt="" > &bull; ${randomNumber} min
-                                        read </span><span class="text-muted user" > <small>★<small> </span>
+                                    <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}"><small>${milisegundos}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"alt="" > &bull; <small>${getRandomInt(20)} min read</small> </span><span class="text-muted user" > <small>★<small> </span>
                                 </div>
                                 <div>
                                 <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -339,7 +338,7 @@ const printMiddlePosts = (array) => {
                                                                 <p class="card-text mb-0"><small>${author}</small> <small
                                                                         class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                         Follow </small></p>
-                                                                <p class="card-text"><small>${milisegundos}· ${randomNumber} min read ★</small></p>
+                                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -402,12 +401,12 @@ const printRightPost = (array) => {
                 <p class="card-title font-weight-bold"data-toggle="modal" data-target="#exampleModal-${id}">${title}</p>
                 <p class="text-card"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 80)} ">${text.slice(0, 80)}</p>
             </div>
-            <a class="text-dark user" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="${randomNumber}">${author}</a><span
+            <a class="text-dark user" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a><span
                 class="text-dark small">
                 in </span>
             <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a>
-            <br><time class="text-muted user" data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos}">${milisegundos}</time><span
-                class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${randomNumber} min read"> <span>&bull;</span> ${randomNumber} min
+            <br><time class="text-muted user" data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos} "><small>${milisegundos}</small></time><span
+                class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"> <span>&bull;</span> <small>${getRandomInt(20)}</small> min
                 read </span><span class="text-muted"> <small>★<small> </span>
             <div class="btn-group">
             <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -470,7 +469,7 @@ const printRightPost = (array) => {
                                                                 <p class="card-text mb-0"><small>${author}</small> <small
                                                                         class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                         Follow </small></p>
-                                                                <p class="card-text"><small>${milisegundos}· ${randomNumber} min read ★</small></p>
+                                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -522,7 +521,7 @@ const printCardInfinitIzquierda = (array) => {
         <div class="row no-gutters d-flex align-items-center  flex-row-reverse">                
             <div class="col-4">
                 <img src="${imgUrl}"
-                    class="card-img mb-3 w-75" alt="">
+                    class="card-img scroll-image w-75" alt="">
             </div>
             <div class="col-8 ">
                 <div class="card-body pr-0 pt-0 ">
@@ -531,13 +530,12 @@ const printCardInfinitIzquierda = (array) => {
                     <div class="btn-group2 d-flex align-items-center justify-content-between">
                         <div>
                             <p class="text muted"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 50)} ">${text.slice(0, 50)} </p>
-                            <a class="text-dark user"data-toggle="popover" data-placement="top" data-author="${author}" data-age="" href="#">${author}</a>
-                            <span class="text-dark user">in</span>
+                            <a class="text-dark user"data-toggle="popover" data-placement="top" data-author="${author}" data-age="" href="#"><small>${author}</small></a>
+                            <span class="text-dark user"><small>in</small></span>
                             <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
-                            <br><time class=" text-muted user"data-toggle="tooltip" data-placement="top" title="${milisegundos} min read" >${milisegundos}</time><span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="&bull; ${randomNumber} min read">
-                            &bull; ${randomNumber} min
-                                read <small>★<small> </span><span>
-                            </span>
+                            <br><time class=" text-muted user"data-toggle="tooltip" data-placement="top" title="${milisegundos} min read"> 
+                            <small>${milisegundos}<small></time><span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="&bull; ${getRandomInt(20)} min read">
+                            &bull; ${getRandomInt(20)} min read <small>★<small> </span>
                         </div>
                         <div class="d-flex mr-2">
                         <span><svg class="bi bi-bookmark text-muted" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -604,7 +602,7 @@ const printCardInfinitIzquierda = (array) => {
                                                 <p class="card-text mb-0"><small>${author}</small> <small
                                                         class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                         Follow </small></p>
-                                                <p class="card-text"><small>${milisegundos}· ${randomNumber} min read ★</small></p>
+                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
                                             </div>
                                         </div>
                                     </div>
@@ -664,12 +662,12 @@ const printPopularPosts = (array) => {
                 <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
                     <h6 class="textA" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h6>
                     <div>
-                    <span><a class="text-dark user" href="#"data-toggle="popover" data-placement="top" data-author="${author}" data-age="${randomNumber}">${author}</a>
+                    <span><a class="text-dark user" href="#"data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a>
                     </span> In <span><a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a></span>
                     <br><time class=" text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}">${milisegundos}</time>
-<span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="${randomNumber} min read">
+<span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="${getRandomInt(20)} min read">
 
-<span width="6px" alt=""> &bull; ${randomNumber} min read ★</span>
+<span width="6px" alt=""> &bull; ${getRandomInt(20)} min read ★</span>
 <span class="text-muted"> </span>
 </div>
     </div>
@@ -725,7 +723,7 @@ const printPopularPosts = (array) => {
                                                 <p class="card-text mb-0"><small>${author}</small> <small
                                                         class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                         Follow </small></p>
-                                                <p class="card-text"><small>${milisegundos}· ${randomNumber} min read ★</small></p>
+                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
                                             </div>
                                         </div>
                                     </div>
