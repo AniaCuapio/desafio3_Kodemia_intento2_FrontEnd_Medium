@@ -207,7 +207,7 @@ const printFirstPost = () => {
                                                             <p class="card-text mb-0"><small>${author}</small> <small
                                                                     class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                     Follow </small></p>
-                                                            <p class="card-text"><small>${milisegundos}· ${randomNumber} min read ★</small></p>
+                                                            <p class="card-text"><small>${milisegundos}· ${randomNumber} min read <small>★<small> </small></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -277,7 +277,7 @@ const printMiddlePosts = (array) => {
                                     <br>
                                     
                                     <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}">${milisegundos}</time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= " >${randomNumber} min read"                                           alt="" > &bull; ${randomNumber} min
-                                        read </span><span class="text-muted user" > ★ </span>
+                                        read </span><span class="text-muted user" > <small>★<small> </span>
                                 </div>
                                 <div>
                                 <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -411,7 +411,7 @@ const printRightPost = (array) => {
             <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a>
             <br><time class="text-muted user" data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos}">${milisegundos}</time><span
                 class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${randomNumber} min read"> <span>&bull;</span> ${randomNumber} min
-                read </span><span class="text-muted"> ★ </span>
+                read </span><span class="text-muted"> <small>★<small> </span>
             <div class="btn-group">
             <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z"/>
@@ -538,8 +538,8 @@ const printCardInfinitIzquierda = (array) => {
                             <span class="text-dark user">in</span>
                             <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
                             <br><time class=" text-muted user"data-toggle="tooltip" data-placement="top" title="${milisegundos} min read" >${milisegundos}</time><span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="&bull; ${randomNumber} min read">
-                            &bull; ${randomNumber} min★
-                                read★</span><span>
+                            &bull; ${randomNumber} min
+                                read <small>★<small> </span><span>
                             </span>
                         </div>
                         <div class="d-flex mr-2">
