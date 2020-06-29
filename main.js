@@ -134,12 +134,12 @@ const printFirstPost = () => {
                         </div>
                         <div class="row">
                             <div class="col-9 p-0">
-                                <a class="text-dark user ml-3" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="">${author}</a>
-                                <span class="text-dark user">in </span>
+                                <a class="text-dark user ml-3 author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="">${author}</a>
+                                <span class="text-dark user author-tex">in LEVEL</span>
                                 <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
                                 <br>
-                                <time class=" text-muted user ml-3">${milisegundos}</time><span class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${getRandomInt(20)} min read">
-                                <svg data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <time class=" text-muted user ml-3"><small>${milisegundos}</small></time><span class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${getRandomInt(20)} min read">
+                                <svg data-toggle="tooltip" data-toggle="tooltip" data-placement="top" data-placement="top" title= "Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg> ${getRandomInt(20)} min
                                     read </span><span><svg class="bi bi-star-fill text-muted" width="0.8rem" height="0.8rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><small class="text-muted">★<small></span>
                             </div>
@@ -269,7 +269,7 @@ const printMiddlePosts = (array) => {
                             <div class="btn-group2 d-flex align-items-center justify-content-between">
                                 <div>
                                     <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author} "data-age="<small>${getRandomInt(20)}</small>" >${author}</a>
-                                    <span class="text-dark user author-tex mb-0">in maker</span>
+                                    <span class="text-dark user author-tex mb-0">in LEVEL</span>
                                     <a class="text-dark user" href="https://medium.com/" data-toggle="popover2" data-placement="top" data-category=""></a>
                                     <br>
                                     
@@ -401,10 +401,10 @@ const printRightPost = (array) => {
                 <p class="card-title font-weight-bold"data-toggle="modal" data-target="#exampleModal-${id}">${title}</p>
                 <p class="text-card"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 80)} ">${text.slice(0, 80)}</p>
             </div>
-            <a class="text-dark user" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a><span
-                class="text-dark small">
-                in </span>
-            <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a>
+            <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a><span
+                class="text-dark small author-tex">
+                in LEVEL</span>
+            <a class="text-dark user author-tex" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a>
             <br><time class="text-muted user" data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos} "><small>${milisegundos}</small></time><span
                 class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"> <span>&bull;</span> <small>${getRandomInt(20)}</small> min
                 read </span><span class="text-muted"> <small>★<small> </span>
@@ -530,7 +530,7 @@ const printCardInfinitIzquierda = (array) => {
                     <div class="btn-group2 d-flex align-items-center justify-content-between">
                         <div>
                             <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author} "data-age="<small>${getRandomInt(20)}</small>" >${author}</a>
-                            <span class="text-dark user author-tex mb-0">in maker</span>
+                            <span class="text-dark user author-tex mb-0">in LEVEL</span>
                             <a class="text-dark user" href="https://medium.com/" data-toggle="popover2" data-placement="top" data-category=""></a>
                             <br>
                             
