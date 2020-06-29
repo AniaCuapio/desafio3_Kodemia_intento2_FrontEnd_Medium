@@ -80,8 +80,7 @@ border: 1px solid rgb(157, 156, 156);
     width: 100%;
     right: 20px;
     margin-top: 0;
-    -o-object-fit: fill;
-    object-fit: fill;
+    object-fit: cover;
 }
   .imageess2{
     position: relative;
@@ -89,8 +88,8 @@ border: 1px solid rgb(157, 156, 156);
     height: 150px;
     margin: 12px;
     margin-top: 0;
-    -o-object-fit: fill;
-    object-fit: fill;
+    object-fit: cover;
+    
 }
   .card-img{
       object-fit: fill;
@@ -200,11 +199,13 @@ li img{
 .card-img{
   height: 100px;
   width: 100px;
+  object-fit: cover;
   
 }
 .card-img2{
   height: 150px;
   width: 150px;
+  object-fit: cover;
   
 }
 .card-title2 {

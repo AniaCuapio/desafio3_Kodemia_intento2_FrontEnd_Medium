@@ -335,8 +335,8 @@ const printMiddlePosts = (array) => {
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="card-body p-0">
-                                                                <p class="card-text mb-0"><small>${author}</small> <small
-                                                                        class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
+                                                                <p class="card-text mb-0"><small>${author}</small> 
+                                                                <small class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                         Follow </small></p>
                                                                 <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
                                                             </div>

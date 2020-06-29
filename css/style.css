@@ -93,8 +93,8 @@ nav ul li:hover {
   width: 100%;
   right: 20px;
   margin-top: 0;
-  -o-object-fit: fill;
-  object-fit: fill;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .imageess2 {
@@ -103,8 +103,8 @@ nav ul li:hover {
   height: 150px;
   margin: 12px;
   margin-top: 0;
-  -o-object-fit: fill;
-  object-fit: fill;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .card-img {
@@ -242,11 +242,15 @@ li img {
 .card-img {
   height: 100px;
   width: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .card-img2 {
   height: 150px;
   width: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .card-title2 {
