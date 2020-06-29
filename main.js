@@ -44,7 +44,7 @@ const handleSaveListener = () => {
 // Esta función guarda el objeto post en la DB
 const postData = (object) => {
     let createdAt = new Date();
-    console.log(createdAt)
+    //console.log(createdAt)
     let readableDate = createdAt.toDateString().slice(4)
     console.log(readableDate)
     object = { ...object,readableDate }
@@ -205,7 +205,6 @@ const printFirstPost = () => {
                                                     <div class="col-md-8">
                                                         <div class="card-body p-0">
                                                             <p class="card-text mb-0"><small>${author}</small> 
-                                                            <span class="border border-danger rounded-lg w-2 text-danger p-1 ml-3" Follow </span></p>
                                                             <p class="card-text">${readableDate}· ${getRandomInt(20)} min read ★ </p>
                                                         </div>
                                                     </div>
