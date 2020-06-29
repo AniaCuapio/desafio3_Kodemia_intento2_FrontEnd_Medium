@@ -43,9 +43,11 @@ const handleSaveListener = () => {
 
 // Esta función guarda el objeto post en la DB
 const postData = (object) => {
-    var date = new Date();
-    let milisegundos = date.getTime();
-    object = { ...object, milisegundos }
+    let createdAt = new Date();
+    console.log(createdAt)
+    let readableDate = createdAt.toDateString().slice(4)
+    console.log(readableDate)
+    object = { ...object,readableDate }
     log(object)
     $.ajax({
         url: "https://ajaxclass-1ca34.firebaseio.com/medium-team2/.json",
@@ -116,7 +118,7 @@ let randomNumber = getRandomInt(20)
 const printFirstPost = () => {
     let firstPost = arrayRecentSection[0]
     log(firstPost)
-    let { title, imgUrl, author, milisegundos, id, text } = firstPost
+    let { title, imgUrl, author, readableDate, id, text } = firstPost
     let postLeft =
         `<div class="card-mb-3">
                 <div class="row no-gutters d-flex">                
@@ -138,8 +140,8 @@ const printFirstPost = () => {
                                 <span class="text-dark user author-tex">in LEVEL</span>
                                 <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
                                 <br>
-                                <time class=" text-muted user ml-3"><small>${milisegundos}</small></time><span class="text-muted small"data-toggle="tooltip" data-placement="top" title= " ${getRandomInt(20)} min read">
-                                <svg data-toggle="tooltip"  data-placement="top" title= "Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <time class=" text-muted user ml-3"><small>${readableDate}</small></time><span class="text-muted small"data-toggle="tooltip" data-placement="top" title= " ${getRandomInt(20)} min read">
+                                <svg data-toggle="tooltip"  data-placement="top" title= "Updated ${readableDate}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg> ${getRandomInt(20)} min
                                     read </span><span><svg class="bi bi-star-fill text-muted" width="0.8rem" height="0.8rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><small class="text-muted">★<small></span>
                             </div>
@@ -202,10 +204,9 @@ const printFirstPost = () => {
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="card-body p-0">
-                                                            <p class="card-text mb-0"><small>${author}</small> <small
-                                                                    class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
-                                                                    Follow </small></p>
-                                                            <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★ </p>
+                                                            <p class="card-text mb-0"><small>${author}</small> 
+                                                            <span class="border border-danger rounded-lg w-2 text-danger p-1 ml-3" Follow </span></p>
+                                                            <p class="card-text">${readableDate}· ${getRandomInt(20)} min read ★ </p>
                                                         </div>
                                                     </div>
                                                 </div>
