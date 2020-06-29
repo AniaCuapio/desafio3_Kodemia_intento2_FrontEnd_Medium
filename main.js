@@ -43,9 +43,11 @@ const handleSaveListener = () => {
 
 // Esta función guarda el objeto post en la DB
 const postData = (object) => {
-    var date = new Date();
-    let milisegundos = date.getTime();
-    object = { ...object, milisegundos }
+    let date = new Date();
+    //log(date)
+    let readableDate = date.toDateString().slice(4)
+    log(readableDate)
+    object = { ...object, readableDate }
     log(object)
     $.ajax({
         url: "https://ajaxclass-1ca34.firebaseio.com/medium-team2/.json",
@@ -69,7 +71,7 @@ const getPostsFromDb = () => {
                 // log('post value: ', value)
                 postsToRender.unshift({ ...value, id: key });
                 // let { id, imgUrl, title, text, author, section, createdAt } = value
-                log(value)
+                //log(value)
             })
             //renderPosts(postsToRender)
         },
@@ -86,10 +88,9 @@ let arrayPopularSection = []
 let arrayRecentSection = []
 
 const filterPosts = (array) => {
-    log("prueba de función de dibujar")
     log(array)
     array.forEach(post => {
-        log(post.section)
+        // log(post.section)
         if (post.section === "popular") {
             arrayPopularSection.push(post)
         }
@@ -113,10 +114,24 @@ function getRandomInt(max) {
 
 let randomNumber = getRandomInt(20)
 
+//onclick="modalPost(event)"
+// const modalPost = (event) => {
+//     let postKey = $(event.target).data("id");
+//     log(postKey)
+//     log(postsToRender)
+//     const resultPost = postsToRender.find((post) => post.id === postKey);
+//     log(resultPost)
+//     let { title, imgUrl, author, milisegundos, id, text } = resultPost
+//     $("#wholeModal").find(".dynamic-title").text(title)
+//     $("#wholeModal").find(".dynamic-subtitle").text(text.slice(0, 50))
+//     $("#wholeModal").find("dynamic-author").text(author)
+//     $("#wholeModal").find("")
+// }
+
 const printFirstPost = () => {
-    let firstPost = arrayRecentSection[0]
-    log(firstPost)
-    let { title, imgUrl, author, milisegundos, id, text } = firstPost
+    let post = array[0]
+    log(post)
+    let { title, imgUrl, author, milisegundos, id, text } = post
     let postLeft =
         `<div class="card-mb-3">
                 <div class="row no-gutters d-flex">                
@@ -127,34 +142,34 @@ const printFirstPost = () => {
                     </div>
                     <div class="col-8 ml-4">
                         <div class="textos">
-                        <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
-                            <p class="card-title font-weight-bold"data-toggle="modal" data-target="#exampleModal-${id}">${title}</p>
-                            <p class="text-card"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 80)}">${text.slice(0, 80)}
-                            </p>
-                        </div>
-                        <div class="row">
-                            <div class="col-9 p-0">
-                                <a class="text-dark user ml-3" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="">${author}</a>
-                                <span class="text-dark user">in </span>
-                                <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
-                                <br>
-                                <time class=" text-muted user ml-3">${milisegundos}</time><span class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${getRandomInt(20)} min read">
-                                <svg data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg> ${getRandomInt(20)} min
+                        <span type="button" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
+                            <p class="card-title font-weight-bold"data-toggle="modal"  data-id="${id}" data-target="exampleModal-${id}"> ${title}</p >
+        < p class="text-card" data - toggle="popover3" data - placement="top" data - description="${text.slice(0, 80)}" > ${text.slice(0, 80)}
+                            </p >
+                        </div >
+    <div class="row">
+        <div class="col-9 p-0">
+            <a class="text-dark user ml-3" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="">${author}</a>
+            <span class="text-dark user">in </span>
+            <a class="text-dark user" href="#" data-toggle="popover2" data-placement="top" data-category=""></a>
+            <br>
+                <time class=" text-muted user ml-3">${milisegundos}</time><span class="text-muted small" data-toggle="tooltip" data-placement="bottom" title=" ${getRandomInt(20)} min read">
+                    <svg data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" /></svg> ${getRandomInt(20)} min
                                     read </span><span><svg class="bi bi-star-fill text-muted" width="0.8rem" height="0.8rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><small class="text-muted">★<small></span>
                             </div>
-                            <div class="col-3 p-0 d-flex justify-content-end">
-                            <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z"/>
-                            </svg>
-                                <svg class="bi bi-three-dots mr-2 menu text-muted" width="1rem" height="1rem"  alt="dotts"data-toggle="popoverdott" data-placement="bottom" data-menu="" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                              </svg>
-                            </div>
+                    <div class="col-3 p-0 d-flex justify-content-end">
+                        <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar" data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
+                        </svg>
+                        <svg class="bi bi-three-dots mr-2 menu text-muted" width="1rem" height="1rem" alt="dotts" data-toggle="popoverdott" data-placement="bottom" data-menu="" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                        </svg>
+                    </div>
                         </div>
                     </div>
                 </div>
-                <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
+            <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -168,139 +183,6 @@ const printFirstPost = () => {
                                 </a>
                             </nav>
                         </div>
-                        <div class="modal-body">
-                            <div class="row d-flex align-items-center">
-                                <div class=" col-12 col-md-3">
-                                    <div class="card border-0 ">
-                                        <div class="card-body">
-                                            <h6 class="card-title font-weight-bolder mb-0">Human Parts</h6>
-                                            <p class="text-muted mb-0 "><small>A Medium </small></p>
-                                            <p class="text-muted mb-0"><small>publication about </small></p>
-                                            <p class="text-muted mb-0"><small>humanity: yours,</small></p>
-                                            <p class="text-muted mb-2"><small>mine, and ours</small></p>
-                                            <p><small class="border border-danger rounded-lg w-2 text-danger p-2 ml-0 "> Follow
-                                                </small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="card border-0">
-                                        <div class="card-body pl-0">
-                                            <p class="card-subtitle mb-2 text-muted">PAST IS PROLOGUE</p6>
-                                            <h5 class="card-title">${title}</h5>
-                                            <p class="card-text text-muted">${text.slice(0, 50)}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-md-8">
-                                            <div class="card mb-5 border-0" style="max-width: 200px;">
-                                                <div class="row no-gutters">
-                                                    <div class="col-md-4">
-                                                        <img src="${imgUrl}"
-                                                            class="card-img rounded-circle" alt="..."
-                                                            style="width:50px; height:50px;">
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <div class="card-body p-0">
-                                                            <p class="card-text mb-0"><small>${author}</small> <small
-                                                                    class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
-                                                                    Follow </small></p>
-                                                            <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★ </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4 mt-3">
-                                        <span><i class="fab fa-twitter"></i></span>
-                                        <span><i class="fab fa-linkedin-in"></i></span>
-                                        <span><i class="fab fa-facebook-square"></i></span>
-                                        <span><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
-                                            </svg></span>
-                                            <span> <svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                          </svg></span>
-                                        </div>
-                                    </div>
-                                    <div class="card border-0">
-                                        <img src="${imgUrl}"
-                                            class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">${text}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" col-12 col-md-3">
-                                    <div class="card border-0">
-                                        <div class="card-body">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-    $('#left-card-container').append(postLeft)
-}
-
-
-const printMiddlePosts = (array) => {
-    for (let index = 1; index < 4; index++) {
-        let post = array[index];
-        log(post)
-        let { title, imgUrl, author, milisegundos, id, text } = post
-        let postCard =
-            `<div id="second-card" class="card mb-3 border-0">
-                <div class="row no-gutters d-flex align-items-center  flex-row-reverse flex-md-row">
-                    <div class="col-4">
-                    <div class="img-m-p"><img src="${imgUrl}" class="card-img"  alt="">
-                    </div>
-                    </div>
-                    <div class="col-8">
-                        <div class="card-body pr-0 pt-0">
-                        <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
-                            <h3 class="card-title2 font-weight-bold" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h3>
-                            <div class="btn-group2 d-flex align-items-center justify-content-between">
-                                <div>
-                                    <a class="text-dark user author-tex" href="#" data-toggle="popover" data-placement="top" data-author="${author} "data-age="<small>${getRandomInt(20)}</small>" >${author}</a>
-                                    <span class="text-dark user author-tex mb-0">in maker</span>
-                                    <a class="text-dark user" href="https://medium.com/" data-toggle="popover2" data-placement="top" data-category=""></a>
-                                    <br>
-                                    
-                                    <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}"><small>${milisegundos}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"alt="" > &bull; <small>${getRandomInt(20)} min read</small> </span><span class="text-muted user" > <small>★<small> </span>
-                                </div>
-                                <div>
-                                <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z"/>
-                            </svg> 
-                            <svg class="bi bi-three-dots mr-2 menu text-muted" width="1rem" height="1rem"  alt="dotts"data-toggle="popoverdott" data-placement="bottom" data-menu="" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                            </svg>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <!-- Just an image -->
-                                <nav class="navbar navbar-light">
-                                    <a class="navbar-brand" href="#">
-                                        <div>
-                                            <img src="https://miro.medium.com/max/195/1*emiGsBgJu2KHWyjluhKXQw.png" width="30"
-                                                height="30" alt="" loading="lazy">
-                                        </div>
-                                    </a>
-                                </nav>
-                            </div>
                             <div class="modal-body">
                                 <div class="row d-flex align-items-center">
                                     <div class=" col-12 col-md-3">
@@ -312,7 +194,7 @@ const printMiddlePosts = (array) => {
                                                 <p class="text-muted mb-0"><small>humanity: yours,</small></p>
                                                 <p class="text-muted mb-2"><small>mine, and ours</small></p>
                                                 <p><small class="border border-danger rounded-lg w-2 text-danger p-2 ml-0 "> Follow
-                                                    </small></p>
+                                                </small></p>
                                             </div>
                                         </div>
                                     </div>
@@ -332,53 +214,112 @@ const printMiddlePosts = (array) => {
                                                             <img src="${imgUrl}"
                                                                 class="card-img rounded-circle" alt="..."
                                                                 style="width:50px; height:50px;">
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="card-body p-0">
-                                                                <p class="card-text mb-0"><small>${author}</small> <small
+                                                    </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body p-0">
+                                                                    <p class="card-text mb-0"><small>${author}</small> <small
                                                                         class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                         Follow </small></p>
-                                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
+                                                                    <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★ </p>
+                                                        </div>
+                                                                </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-4 mt-3">
+                                                        <span><i class="fab fa-twitter"></i></span>
+                                                        <span><i class="fab fa-linkedin-in"></i></span>
+                                                        <span><i class="fab fa-facebook-square"></i></span>
+                                                        <span><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
+                                                        </svg></span>
+                                                        <span> <svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                                        </svg></span>
+                                                    </div>
+                                                </div>
+                                                <div class="card border-0">
+                                                    <img src="${imgUrl}"
+                                                        class="card-img-top" alt="...">
+                                                        <div class="card-body">
+                                                            <p class="card-text">${text}</p>
+                                                        </div>
+                                    </div>
+                                                </div>
+                                                <div class=" col-12 col-md-3">
+                                                    <div class="card border-0">
+                                                        <div class="card-body">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-4 mt-3">
-                                            <span><i class="fab fa-twitter"></i></span>
-                                            <span><i class="fab fa-linkedin-in"></i></span>
-                                            <span><i class="fab fa-facebook-square"></i></span>
-                                            <span><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
-                                                </svg></span>
-                                                <span> <svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                              </svg></span>
-                                            </div>
                                         </div>
-                                        <div class="card border-0">
-                                            <img src="${imgUrl}"
-                                                class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <p class="card-text">${text}</p>
-                                            </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
-                                    <div class=" col-12 col-md-3">
-                                        <div class="card border-0">
-                                            <div class="card-body">
+                                </div>
+                            </div>`
+    $('#left-card-container').append(postLeft)
+}
+
+
+const printMiddlePosts = (array) => {
+    for (let index = 1; index < 4; index++) {
+        let post = array[index];
+        //log(post)
+        let { title, imgUrl, author, milisegundos, id } = post
+        let postCard =
+            `<div id="card" class="card mb-3 border-0">
+                                <div class="row no-gutters d-flex flex-row-reverse flex-md-row">
+                                    <div class="col-4 d-flex">
+                                        <div style="background-image: url('${imgUrl}');"
+                                            class="center-post-image w-100 align-self-stretch"></div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body p-2">
+                                            <span type="button" data-id="${id}" class="detele-btn float-right text-muted"
+                                                aria-hidden="true">&times;</span>
+                                            <h3 class="card-title2 font-weight-bold" data-toggle="modal"
+                                                data-target="#exampleModal-${id}">${title}</h3>
+                                            <div class="btn-group2 d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <a class="text-dark user author-tex" href="#" data-toggle="popover"
+                                                        data-placement="top" data-author="${author} "
+                                                        data-age="${getRandomInt(20)}">${author}</a>
+                                                    <span class="text-dark user author-tex mb-0">in maker</span>
+                                                    <a class="text-dark user" href="https://medium.com/" data-toggle="popover2"
+                                                        data-placement="top" data-category=""></a>
+                                                    <br>
+
+                                                        <time class="text-muted user" data-toggle="tooltip" data-placement="top"
+                                                            title="Updated ${milisegundos}"><small>${milisegundos}</small></time> <span
+                                                                class="text-muted user" data-toggle="tooltip" data-placement="bottom"
+                                                                title="${getRandomInt(20)} min read" alt=""> &bull;
+                                    <small>${getRandomInt(20)} min read</small> </span><span
+                                                            class="text-muted user"> <small>★</small> </span>
+                            </div>
+                                                    <div>
+                                                        <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem"
+                                                            alt="guardar" data-toggle="tooltip" data-placement="bottom" title="Guardar"
+                                                            viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
+                                                        </svg>
+                                                        <svg class="bi bi-three-dots mr-2 menu text-muted" width="1rem" height="1rem"
+                                                            alt="dotts" data-toggle="popoverdott" data-placement="bottom" data-menu=""
+                                                            viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> `
+`
         $("#center-cards-container").append(postCard)
     }
 }
@@ -389,127 +330,127 @@ const printRightPost = (array) => {
     log("right post:", rightPost)
     let { title, imgUrl, author, milisegundos, id, text } = rightPost
     let rightPostCard = `<div class="card-mb-3">
-    <div class="row no-gutters">
-        <div class="col-mb-4">
-            <img class="imageess2"
-                src="${imgUrl}"
-                alt="atardecer 2">
+                                    <div class="row no-gutters">
+                                        <div class="col-mb-4">
+                                            <img class="imageess2"
+                                                src="${imgUrl}"
+                                                alt="atardecer 2">
         </div>
-        <div class="col-md-8 ml-4">
-            <div class="textos">
-            <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
-                <p class="card-title font-weight-bold"data-toggle="modal" data-target="#exampleModal-${id}">${title}</p>
-                <p class="text-card"data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 80)} ">${text.slice(0, 80)}</p>
-            </div>
-            <a class="text-dark user" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a><span
-                class="text-dark small">
-                in </span>
-            <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a>
-            <br><time class="text-muted user" data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos} "><small>${milisegundos}</small></time><span
-                class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"> <span>&bull;</span> <small>${getRandomInt(20)}</small> min
+                                            <div class="col-md-8 ml-4">
+                                                <div class="textos">
+                                                    <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
+                                                    <p class="card-title font-weight-bold" data-toggle="modal" data-target="#exampleModal-${id}">${title}</p>
+                                                    <p class="text-card" data-toggle="popover3" data-placement="top" data-description="${text.slice(0, 80)} ">${text.slice(0, 80)}</p>
+                                                </div>
+                                                <a class="text-dark user" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a><span
+                                                    class="text-dark small">
+                                                    in </span>
+                                                <a class="text-dark user" href="#" data-toggle="popover2" data-placement="top" data-category="">News</a>
+                                                <br><time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos} "><small>${milisegundos}</small></time><span
+                                                    class="text-muted small" data-toggle="tooltip" data-placement="bottom" title="${getRandomInt(20)} min read"> <span>&bull;</span> <small>${getRandomInt(20)}</small> min
                 read </span><span class="text-muted"> <small>★<small> </span>
-            <div class="btn-group">
-            <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z"/>
-            </svg> 
-            <svg class="bi bi-three-dots mr-2 menu text-muted" width="1rem" height="1rem"  alt="dotts"data-toggle="popoverdott" data-placement="bottom" data-menu="" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-            </svg></div>
+                                                        <div class="btn-group">
+                                                            <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar" data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
+                                                            </svg>
+                                                            <svg class="bi bi-three-dots mr-2 menu text-muted" width="1rem" height="1rem" alt="dotts" data-toggle="popoverdott" data-placement="bottom" data-menu="" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                                            </svg></div>
         </div>
     </div>
 </div>
-<div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <!-- Just an image -->
+                                                <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
+                                                    <div class="modal-dialog modal-dialog modal-xl">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <!-- Just an image -->
                                 <nav class="navbar navbar-light">
-                                    <a class="navbar-brand" href="#">
-                                        <div>
-                                            <img src="https://miro.medium.com/max/195/1*emiGsBgJu2KHWyjluhKXQw.png" width="30"
-                                                height="30" alt="" loading="lazy">
+                                                                    <a class="navbar-brand" href="#">
+                                                                        <div>
+                                                                            <img src="https://miro.medium.com/max/195/1*emiGsBgJu2KHWyjluhKXQw.png" width="30"
+                                                                                height="30" alt="" loading="lazy">
                                         </div>
                                     </a>
                                 </nav>
                             </div>
-                            <div class="modal-body">
-                                <div class="row d-flex align-items-center">
-                                    <div class=" col-12 col-md-3">
-                                        <div class="card border-0 ">
-                                            <div class="card-body">
-                                                <h6 class="card-title font-weight-bolder mb-0">Human Parts</h6>
-                                                <p class="text-muted mb-0 "><small>A Medium </small></p>
-                                                <p class="text-muted mb-0"><small>publication about </small></p>
-                                                <p class="text-muted mb-0"><small>humanity: yours,</small></p>
-                                                <p class="text-muted mb-2"><small>mine, and ours</small></p>
-                                                <p><small class="border border-danger rounded-lg w-2 text-danger p-2 ml-0 "> Follow
+                                                                <div class="modal-body">
+                                                                    <div class="row d-flex align-items-center">
+                                                                        <div class=" col-12 col-md-3">
+                                                                            <div class="card border-0 ">
+                                                                                <div class="card-body">
+                                                                                    <h6 class="card-title font-weight-bolder mb-0">Human Parts</h6>
+                                                                                    <p class="text-muted mb-0 "><small>A Medium </small></p>
+                                                                                    <p class="text-muted mb-0"><small>publication about </small></p>
+                                                                                    <p class="text-muted mb-0"><small>humanity: yours,</small></p>
+                                                                                    <p class="text-muted mb-2"><small>mine, and ours</small></p>
+                                                                                    <p><small class="border border-danger rounded-lg w-2 text-danger p-2 ml-0 "> Follow
                                                     </small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="card border-0">
-                                            <div class="card-body pl-0">
-                                                <p class="card-subtitle mb-2 text-muted">PAST IS PROLOGUE</p6>
-                                                <h5 class="card-title">${title}</h5>
-                                                <p class="card-text text-muted">${text.slice(0, 50)}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-md-8">
-                                                <div class="card mb-5 border-0" style="max-width: 200px;">
-                                                    <div class="row no-gutters">
-                                                        <div class="col-md-4">
-                                                            <img src="${imgUrl}"
-                                                                class="card-img rounded-circle" alt="..."
-                                                                style="width:50px; height:50px;">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-md-6">
+                                                                            <div class="card border-0">
+                                                                                <div class="card-body pl-0">
+                                                                                    <p class="card-subtitle mb-2 text-muted">PAST IS PROLOGUE</p6>
+                                                                                    <h5 class="card-title">${title}</h5>
+                                                                                    <p class="card-text text-muted">${text.slice(0, 50)}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-12 col-md-8">
+                                                                                    <div class="card mb-5 border-0" style="max-width: 200px;">
+                                                                                        <div class="row no-gutters">
+                                                                                            <div class="col-md-4">
+                                                                                                <img src="${imgUrl}"
+                                                                                                    class="card-img rounded-circle" alt="..."
+                                                                                                    style="width:50px; height:50px;">
                                                         </div>
-                                                        <div class="col-md-8">
-                                                            <div class="card-body p-0">
-                                                                <p class="card-text mb-0"><small>${author}</small> <small
-                                                                        class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
-                                                                        Follow </small></p>
-                                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4 mt-3">
-                                            <span><i class="fab fa-twitter"></i></span>
-                                            <span><i class="fab fa-linkedin-in"></i></span>
-                                            <span><i class="fab fa-facebook-square"></i></span>
-                                            <span><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
-                                                </svg></span>
-                                                <span> <svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                              </svg></span>
-                                            </div>
+                                                                                                <div class="col-md-8">
+                                                                                                    <div class="card-body p-0">
+                                                                                                        <p class="card-text mb-0"><small>${author}</small> <small
+                                                                                                            class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
+                                                                                                            Follow </small></p>
+                                                                                                        <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-12 col-md-4 mt-3">
+                                                                                        <span><i class="fab fa-twitter"></i></span>
+                                                                                        <span><i class="fab fa-linkedin-in"></i></span>
+                                                                                        <span><i class="fab fa-facebook-square"></i></span>
+                                                                                        <span><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                                            <path fill-rule="evenodd"
+                                                                                                d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
+                                                                                        </svg></span>
+                                                                                        <span> <svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                                            <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                                                                        </svg></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card border-0">
+                                                                                    <img src="${imgUrl}"
+                                                                                        class="card-img-top" alt="...">
+                                                                                        <div class="card-body">
+                                                                                            <p class="card-text">${text}</p>
+                                                                                        </div>
                                         </div>
-                                        <div class="card border-0">
-                                            <img src="${imgUrl}"
-                                                class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <p class="card-text">${text}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class=" col-12 col-md-3">
-                                        <div class="card border-0">
-                                            <div class="card-body">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> `
+                                                                                </div>
+                                                                                <div class=" col-12 col-md-3">
+                                                                                    <div class="card border-0">
+                                                                                        <div class="card-body">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> `
     $("#right-card-container").append(rightPostCard)
 }
 
@@ -518,10 +459,11 @@ const printCardInfinitIzquierda = (array) => {
         let { title, text, author, milisegundos, imgUrl, id } = post
         let infinitScroll = `
         <div id="second-card" class="card mb-3 border-0">                
-        <div class="row no-gutters d-flex align-items-center  flex-row-reverse">                
-            <div class="col-4">
-                <img src="${imgUrl}"
-                    class="card-img scroll-image w-75" alt="">
+        <div class="row no-gutters d-flex flex-row-reverse">                
+            <div class="col-4 d-flex">
+            <div style="background-image:url('${imgUrl}');"
+                        class="center-post-image w-100 align-self-stretch bg-dark">acá va el background image</div>
+            </div>
             </div>
             <div class="col-8 ">
                 <div class="card-body pr-0 pt-0 ">
@@ -655,115 +597,115 @@ const printPopularPosts = (array) => {
         let { title, author, milisegundos, text, imgUrl, id } = post
         let postCard2 =
             `<li class="mb-5">
-                <div class="col-3 col-md-4 p-0">
-                    <h2 class="text-muted text-right">0${popularCounter + 1}</h2>
-                </div>
-                <div class="col-9 col-md-8">
-                <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
-                    <h6 class="textA" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h6>
-                    <div>
-                    <span><a class="text-dark user" href="#"data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a>
-                    </span> In <span><a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a></span>
-                    <br><time class=" text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}">${milisegundos}</time>
-<span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="${getRandomInt(20)} min read">
+                                                                <div class="col-3 col-md-4 p-0">
+                                                                    <h2 class="text-muted text-right">0${popularCounter + 1}</h2>
+                                                                </div>
+                                                                <div class="col-9 col-md-8">
+                                                                    <span type="button" data-id="${id}" class="detele-btn float-right text-muted" aria-hidden="true">&times;</span>
+                                                                    <h6 class="textA" data-toggle="modal" data-target="#exampleModal-${id}">${title}</h6>
+                                                                    <div>
+                                                                        <span><a class="text-dark user" href="#" data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a>
+                                                                        </span> In <span><a class="text-dark user" href="#" data-toggle="popover2" data-placement="top" data-category="">News</a></span>
+                                                                        <br><time class=" text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}">${milisegundos}</time>
+                                                                            <span class="text-muted user" data-toggle="tooltip" data-placement="bottom" title="${getRandomInt(20)} min read">
 
-<span width="6px" alt=""> &bull; ${getRandomInt(20)} min read ★</span>
-<span class="text-muted"> </span>
+                                                                                <span width="6px" alt=""> &bull; ${getRandomInt(20)} min read ★</span>
+                                                                                <span class="text-muted"> </span>
 </div>
     </div>
     </li>
-    <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <!-- Just an image -->
+                                                                    <div id="exampleModal-${id}" class="modal" tabindex="-1" role="dialog">
+                                                                        <div class="modal-dialog modal-dialog modal-xl">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <!-- Just an image -->
                 <nav class="navbar navbar-light">
-                    <a class="navbar-brand" href="#">
-                        <div>
-                            <img src="https://miro.medium.com/max/195/1*emiGsBgJu2KHWyjluhKXQw.png" width="30"
-                                height="30" alt="" loading="lazy">
+                                                                                        <a class="navbar-brand" href="#">
+                                                                                            <div>
+                                                                                                <img src="https://miro.medium.com/max/195/1*emiGsBgJu2KHWyjluhKXQw.png" width="30"
+                                                                                                    height="30" alt="" loading="lazy">
                         </div>
                     </a>
                 </nav>
             </div>
-            <div class="modal-body">
-                <div class="row d-flex align-items-center">
-                    <div class=" col-12 col-md-3">
-                        <div class="card border-0 ">
-                            <div class="card-body">
-                                <h6 class="card-title font-weight-bolder mb-0">Human Parts</h6>
-                                <p class="text-muted mb-0 "><small>A Medium </small></p>
-                                <p class="text-muted mb-0"><small>publication about </small></p>
-                                <p class="text-muted mb-0"><small>humanity: yours,</small></p>
-                                <p class="text-muted mb-2"><small>mine, and ours</small></p>
-                                <p><small class="border border-danger rounded-lg w-2 text-danger p-2 ml-0 "> Follow
+                                                                                    <div class="modal-body">
+                                                                                        <div class="row d-flex align-items-center">
+                                                                                            <div class=" col-12 col-md-3">
+                                                                                                <div class="card border-0 ">
+                                                                                                    <div class="card-body">
+                                                                                                        <h6 class="card-title font-weight-bolder mb-0">Human Parts</h6>
+                                                                                                        <p class="text-muted mb-0 "><small>A Medium </small></p>
+                                                                                                        <p class="text-muted mb-0"><small>publication about </small></p>
+                                                                                                        <p class="text-muted mb-0"><small>humanity: yours,</small></p>
+                                                                                                        <p class="text-muted mb-2"><small>mine, and ours</small></p>
+                                                                                                        <p><small class="border border-danger rounded-lg w-2 text-danger p-2 ml-0 "> Follow
                                     </small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="card border-0">
-                            <div class="card-body pl-0">
-                                <p class="card-subtitle mb-2 text-muted">PAST IS PROLOGUE</p6>
-                                <h5 class="card-title">${title}</h5>
-                                <p class="card-text text-muted">${text.slice(0, 50)}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-md-8">
-                                <div class="card mb-5 border-0" style="max-width: 200px;">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            <img src="${imgUrl}"
-                                                class="card-img rounded-circle" alt="..."
-                                                style="width:50px; height:50px;">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-12 col-md-6">
+                                                                                                <div class="card border-0">
+                                                                                                    <div class="card-body pl-0">
+                                                                                                        <p class="card-subtitle mb-2 text-muted">PAST IS PROLOGUE</p6>
+                                                                                                        <h5 class="card-title">${title}</h5>
+                                                                                                        <p class="card-text text-muted">${text.slice(0, 50)}</p>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-12 col-md-8">
+                                                                                                        <div class="card mb-5 border-0" style="max-width: 200px;">
+                                                                                                            <div class="row no-gutters">
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <img src="${imgUrl}"
+                                                                                                                        class="card-img rounded-circle" alt="..."
+                                                                                                                        style="width:50px; height:50px;">
                                         </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body p-0">
-                                                <p class="card-text mb-0"><small>${author}</small> <small
-                                                        class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
-                                                        Follow </small></p>
-                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4 mt-3">
-                            <span><i class="fab fa-twitter"></i></span>
-                            <span><i class="fab fa-linkedin-in"></i></span>
-                            <span><i class="fab fa-facebook-square"></i></span>
-                            <span><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
-                                </svg></span>
-                                <span> <svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                              </svg></span>
-                            </div>
+                                                                                                                    <div class="col-md-8">
+                                                                                                                        <div class="card-body p-0">
+                                                                                                                            <p class="card-text mb-0"><small>${author}</small> <small
+                                                                                                                                class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
+                                                                                                                                Follow </small></p>
+                                                                                                                            <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-12 col-md-4 mt-3">
+                                                                                                            <span><i class="fab fa-twitter"></i></span>
+                                                                                                            <span><i class="fab fa-linkedin-in"></i></span>
+                                                                                                            <span><i class="fab fa-facebook-square"></i></span>
+                                                                                                            <span><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                                                                <path fill-rule="evenodd"
+                                                                                                                    d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z" />
+                                                                                                            </svg></span>
+                                                                                                            <span> <svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                                                                <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                                                                                            </svg></span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="card border-0">
+                                                                                                        <img src="${imgUrl}"
+                                                                                                            class="card-img-top" alt="...">
+                                                                                                            <div class="card-body">
+                                                                                                                <p class="card-text">${text}</p>
+                                                                                                            </div>
                         </div>
-                        <div class="card border-0">
-                            <img src="${imgUrl}"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">${text}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-12 col-md-3">
-                        <div class="card border-0">
-                            <div class="card-body">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+                                                                                                    </div>
+                                                                                                    <div class=" col-12 col-md-3">
+                                                                                                        <div class="card border-0">
+                                                                                                            <div class="card-body">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
 `
         $("#container-popular").append(postCard2)
         popularCounter++

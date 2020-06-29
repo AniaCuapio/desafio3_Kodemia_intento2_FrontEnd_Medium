@@ -189,7 +189,7 @@ li img {
   top: 0;
 }
 
-.asaide {
+.aside {
   position: -webkit-sticky;
   position: sticky;
   top: 50px;
@@ -202,18 +202,14 @@ li img {
   z-index: 99;
 }
 
-.img-m-p {
-  -o-object-fit: fill;
-     object-fit: fill;
-}
-
-.card-img {
-  height: 100px;
-  width: 100px;
-}
-
 .scroll-image {
   width: 100px;
   height: 120px;
+}
+
+.center-post-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 /*# sourceMappingURL=style.css.map */
