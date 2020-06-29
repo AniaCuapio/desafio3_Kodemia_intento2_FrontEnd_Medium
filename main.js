@@ -26,7 +26,7 @@ const handleSaveListener = () => {
     // $("#wrapper-format-navbar").removeClass(".d-none")
     $("#save-btn").click(function (e) {
         e.preventDefault();
-        alert("prueba de botón guardar")
+        //alert("prueba de botón guardar")
         let title = $("#input-title").val()
         let text = $("#input-text").val()
         let author = $("#input-author").val()
@@ -138,8 +138,8 @@ const printFirstPost = () => {
                                 <span class="text-dark user author-tex">in LEVEL</span>
                                 <a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category=""></a>
                                 <br>
-                                <time class=" text-muted user ml-3"><small>${milisegundos}</small></time><span class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= " ${getRandomInt(20)} min read">
-                                <svg data-toggle="tooltip" data-toggle="tooltip" data-placement="top" data-placement="top" title= "Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <time class=" text-muted user ml-3"><small>${milisegundos}</small></time><span class="text-muted small"data-toggle="tooltip" data-placement="top" title= " ${getRandomInt(20)} min read">
+                                <svg data-toggle="tooltip"  data-placement="top" title= "Updated ${milisegundos}" class="bi bi-dot text-muted user ml-3" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg> ${getRandomInt(20)} min
                                     read </span><span><svg class="bi bi-star-fill text-muted" width="0.8rem" height="0.8rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><small class="text-muted">★<small></span>
                             </div>
@@ -784,7 +784,7 @@ const deletePost = (e) => {
     deletePostDB(id)
     getPostsFromDb()
     location.reload()
-    alert("prueba de borrar")
+    //alert("prueba de borrar")
 }
 
 
