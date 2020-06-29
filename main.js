@@ -818,3 +818,25 @@ window.addEventListener("scroll", (event) => {
         printCardInfinitIzquierda(arrayTotals)
     }
 })
+$('[data-toggle="popover"]').popover({
+    container: "body",
+    trigger: "hover",
+    html: true,
+    content: function () {
+        const author = $(this).data("author")
+        const age = $(this).data("age")
+        const imgUrl = $(this).data("imgUrl")
+        console.log(author)
+        return `<div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${author}</h5>
+          <hr>
+          <h6 class="card-subtitle mb-2 text-muted">Medium member since 1983 </h6>
+          <hr>
+            <div><img src="https://cdn.iconscout.com/icon/free/png-512/medium-47-433328.png"class="card-img rounded-circle" alt="..."style="width:2px; height:2px;">
+            </div>
+          <p class="card-text">Developer, accidental wordsmith. OneZero columnist trying to debug the why behind tech.</p>
+        </div>
+      </div>`
+    }
+});

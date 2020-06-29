@@ -18,7 +18,7 @@ body {
 }
 
 .wrapper1 .item {
-  min-width: 130px;
+  min-width: 100px;
   height: 50px;
   line-height: 50px;
   text-align: center;
