@@ -516,7 +516,7 @@ const printRightPost = (array) => {
 
 const printCardInfinitIzquierda = (array) => {
     array.forEach(post => {
-        let { title, text, author, milisegundos, imgUrl, id } = post
+        let { title, text, author, readableDate, imgUrl, id } = post
         let infinitScroll = `
     <div id="second-card" class="card mb-5 border-0 pr-2">
         <div class="row no-gutters d-flex align-items-center  flex-row-reverse ">
@@ -535,7 +535,7 @@ const printCardInfinitIzquierda = (array) => {
                             <a class="text-dark user" href="https://medium.com/" data-toggle="popover2" data-placement="top" data-category=""></a>
                             <br>
                             
-                            <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}"><small>${milisegundos}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"alt="" > &bull; <small>${getRandomInt(20)} min read</small> </span><span class="text-muted user" > <small>★<small> </span>
+                            <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${readableDate}"><small>${readableDate}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"alt="" > &bull; <small>${getRandomInt(20)} min read</small> </span><span class="text-muted user" > <small>★<small> </span>
                         </div>
                         <div>
                         <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -601,7 +601,7 @@ const printCardInfinitIzquierda = (array) => {
                                                 <p class="card-text mb-0"><small>${author}</small> <small
                                                         class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                         Follow </small></p>
-                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
+                                                <p class="card-text"><small>${readableDate}· ${getRandomInt(20)} min read ★</small></p>
                                             </div>
                                         </div>
                                     </div>
@@ -651,7 +651,7 @@ const printPopularPosts = (array) => {
     let popularCounter = 0
     for (let i = 0; i < 4; i++) {
         let post = array[i];
-        let { title, author, milisegundos, text, imgUrl, id } = post
+        let { title, author, readableDate, text, imgUrl, id } = post
         let postCard2 =
             `<li class="mb-5">
                 <div class="col-3 col-md-4 p-0">
@@ -663,7 +663,7 @@ const printPopularPosts = (array) => {
                     <div>
                     <span><a class="text-dark user" href="#"data-toggle="popover" data-placement="top" data-author="${author}" data-age="${getRandomInt(20)}">${author}</a>
                     </span> In <span><a class="text-dark user" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a></span>
-                    <br><time class=" text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}">${milisegundos}</time>
+                    <br><time class=" text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${readableDate}">${readableDate}</time>
 <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title="${getRandomInt(20)} min read">
 
 <span width="6px" alt=""> &bull; ${getRandomInt(20)} min read ★</span>
@@ -722,7 +722,7 @@ const printPopularPosts = (array) => {
                                                 <p class="card-text mb-0"><small>${author}</small> <small
                                                         class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                         Follow </small></p>
-                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
+                                                <p class="card-text"><small>${readableDate}· ${getRandomInt(20)} min read ★</small></p>
                                             </div>
                                         </div>
                                     </div>
