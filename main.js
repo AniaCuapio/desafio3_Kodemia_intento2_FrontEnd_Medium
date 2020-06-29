@@ -255,7 +255,7 @@ const printMiddlePosts = (array) => {
     for (let index = 1; index < 4; index++) {
         let post = array[index];
         log(post)
-        let { title, imgUrl, author, milisegundos, id, text } = post
+        let { title, imgUrl, author, readableDate, id, text } = post
         let postCard =
             `<div id="second-card" class="card mb-3 border-0">
                 <div class="row no-gutters d-flex align-items-center  flex-row-reverse flex-md-row">
@@ -274,7 +274,7 @@ const printMiddlePosts = (array) => {
                                     <a class="text-dark user" href="https://medium.com/" data-toggle="popover2" data-placement="top" data-category=""></a>
                                     <br>
                                     
-                                    <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${milisegundos}"><small>${milisegundos}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"alt="" > &bull; <small>${getRandomInt(20)} min read</small> </span><span class="text-muted user" > <small>★<small> </span>
+                                    <time class="text-muted user" data-toggle="tooltip" data-placement="top" title="Updated ${readableDate}"><small>${readableDate}</small></time> <span class="text-muted user"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"alt="" > &bull; <small>${getRandomInt(20)} min read</small> </span><span class="text-muted user" > <small>★<small> </span>
                                 </div>
                                 <div>
                                 <svg class="bi bi-bookmark d-md-none text-muted" width="1rem" height="1rem" alt="guardar"data-toggle="tooltip" data-placement="bottom" title="Guardar" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -339,7 +339,7 @@ const printMiddlePosts = (array) => {
                                                                 <p class="card-text mb-0"><small>${author}</small> 
                                                                 <small class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                         Follow </small></p>
-                                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
+                                                                <p class="card-text"><small>${readableDate}· ${getRandomInt(20)} min read ★</small></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -388,7 +388,7 @@ const printRightPost = (array) => {
     // alert("funciona print Right Post")
     let rightPost = array[4]
     log("right post:", rightPost)
-    let { title, imgUrl, author, milisegundos, id, text } = rightPost
+    let { title, imgUrl, author, readableDate, id, text } = rightPost
     let rightPostCard = `<div class="card-mb-3">
     <div class="row no-gutters">
         <div class="col-mb-4">
@@ -406,7 +406,7 @@ const printRightPost = (array) => {
                 class="text-dark small author-tex">
                 in LEVEL</span>
             <a class="text-dark user author-tex" href="#"data-toggle="popover2" data-placement="top" data-category="">News</a>
-            <br><time class="text-muted user" data-toggle="tooltip" data-placement="top" title= "Updated ${milisegundos} "><small>${milisegundos}</small></time><span
+            <br><time class="text-muted user" data-toggle="tooltip" data-placement="top" title= "Updated ${readableDate} "><small>${readableDate}</small></time><span
                 class="text-muted small"data-toggle="tooltip" data-placement="bottom" title= "${getRandomInt(20)} min read"> <span>&bull;</span> <small>${getRandomInt(20)}</small> min
                 read </span><span class="text-muted"> <small>★<small> </span>
             <div class="btn-group">
@@ -470,7 +470,7 @@ const printRightPost = (array) => {
                                                                 <p class="card-text mb-0"><small>${author}</small> <small
                                                                         class="border border-danger rounded-lg w-2 text-danger p-1 ml-3">
                                                                         Follow </small></p>
-                                                                <p class="card-text"><small>${milisegundos}· ${getRandomInt(20)} min read ★</small></p>
+                                                                <p class="card-text"><small>${readableDate}· ${getRandomInt(20)} min read ★</small></p>
                                                             </div>
                                                         </div>
                                                     </div>
